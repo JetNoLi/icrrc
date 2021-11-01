@@ -6,7 +6,11 @@ admin.initializeApp({
 });
 
 const db = admin.firestore();
+const folderCollection = db.collection('folders');
+const fileCollection = db.collection('files');
 
 module.exports = {
-    db
+    db,
+    folderCollection,
+    fileCollection
 }
