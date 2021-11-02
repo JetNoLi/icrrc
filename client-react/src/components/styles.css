@@ -1,10 +1,16 @@
-.fileWide{
-    /* width: 100vw; */
-    height: 6.5vw;
-    border: 1px solid grey;
-    border-radius: 3px;
+.fileContainer{
+    width: 10vw;
+    height: 25vh;
+    border-radius: 12px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.fileDisplay{
-    background-color: bisque;
+.fileDisplayContainer{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }

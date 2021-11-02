@@ -14,6 +14,8 @@ const swaggerExpress = require('express-jsdoc-swagger');
 const health = require('./routes/health');
 const upload = require('./routes/upload');
 const download = require('./routes/download');
+const file = require('./routes/file');
+const folder = require('./routes/folder');
 
 // declare server instance
 const app = express();
@@ -32,6 +34,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use('/health', health)
 app.use('/upload', upload);
 app.use('/download', download);
+app.use('/file', file);
+app.use('/folder', folder);
 
 // static route for serving images
 app.use("/images", express.static(path.join(__dirname, 'images')));
@@ -43,5 +47,5 @@ app.get("/health", (req, res) =>{
 
 // start server
 app.listen(process.env.PORT || 8080 , () =>{
-    console.log("Server is running on port", process.env.PORT + "...")
+    console.log("Server is running on port", process.env.PORT + "...");
 })

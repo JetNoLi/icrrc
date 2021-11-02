@@ -12,6 +12,17 @@ const moveImage = (oldPath, newPath) =>{
   });
 } 
 
+const resolvePath = (formattedPath) =>{
+  const path = formattedPath.toString();
+
+  if (typeof(path) === typeof("hello")){
+    return path.replace(/_/g, "/")
+  }
+
+  return null;
+}
+
 module.exports = {
-	moveImage
+	moveImage,
+  resolvePath
 }

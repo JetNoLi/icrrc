@@ -15,7 +15,7 @@ module.exports = {
         },
       },
       baseDir: __dirname,
-      // Glob pattern to find your jsdoc files (multiple patterns can be added in an array)
+      // Glob pattern to find your jsdoc files (multiple patterns can be added in an array) 
       filesPattern: './routes/*.js',
       // URL where SwaggerUI will be rendered
       swaggerUIPath: '/docs',
