@@ -29,7 +29,9 @@ router.get('/', async (req, res) =>{
 				.end()
 		}
 
-		res.send({...file.data(), id: file.ref.id()});
+		res.send({...file.data(), id: file.ref.id})
+			.end()
+		return;
 	}
 
 	const files = (await getAllFiles()).map( file =>{

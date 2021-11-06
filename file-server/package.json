@@ -23,6 +23,7 @@
     "firebase-admin": "^10.0.0"
   },
   "devDependencies": {
+    "csv-writer": "^1.6.0",
     "jest": "^27.3.1"
   }
 }
