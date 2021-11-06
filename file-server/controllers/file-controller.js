@@ -1,5 +1,6 @@
 const {fileCollection, folderCollection} = require('../firebase');
-const { moveImage } = require('../utils/file-utils')
+const { moveImage } = require('../utils/file-utils');
+const { getFolderByPath } = require('./folder-controller');
 
 const getAllFiles = async () =>{
 	const files = await fileCollection.get();
@@ -12,7 +13,7 @@ const getAllFiles = async () =>{
 }
 
 const getFileById = async (id) =>{
-	console.log(id)
+	// console.log(id)
 	const file = await fileCollection
 		.doc(id)
 		.get();
@@ -40,18 +41,23 @@ const moveFileById = async (id, newPath) =>{
 	const fileData = file.data();
 	const originalPath = fileData.path;
 
-	// Move file
-	const verify = await moveImage(originalPath, newPath);
+	const folder = await getFolderByPath(newPath);
 
-	if (verify !== newPath){
+	if (!folder){
+		return null
+	}
+
+	// Move file
+	const verify = await moveImage(originalPath, newPath + fileData.name);
+
+	if (verify !== newPath + fileData.name){
 		return verify
 	}
 
 	// Update DB
-	// To do update parent folder id
-	await file.ref.update({path: oldPath})
+	await file.ref.update({path: verify, folderId: folder.ref.id, parentDirectory: folder.data().name})
 
-	return (newPath)
+	return (verify)
 }
 
 const moveFileByPath = async (path, newPath) =>{
@@ -64,18 +70,24 @@ const moveFileByPath = async (path, newPath) =>{
 	const fileData = file.data();
 	const originalPath = fileData.path;
 
-	// Move file
-	const verify = await moveImage(originalPath, newPath);
+	const folder = await getFolderByPath(newPath);
 
-	if (verify !== newPath){
+	if (!folder){
+		return null
+	}
+
+
+	// Move file
+	const verify = await moveImage(originalPath, newPath + fileData.name);
+
+	if (verify !== newPath + fileData.name){
 		return verify
 	}
 
 	// Update DB
-	// To do update parent folder id
-	await file.ref.update({path: oldPath})
+	await file.ref.update({path: verify, folderId: folder.ref.id, parentDirectory: folder.data().name})
 
-	return (newPath)
+	return (verify)
 }
 
 
@@ -84,5 +96,5 @@ module.exports = {
     getFileByPath,
     moveFileById,
     moveFileByPath,
-		getAllFiles
+	getAllFiles
 }

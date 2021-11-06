@@ -5,7 +5,7 @@ const { makeFolder } = require('../utils/folder-utils');
 const createFolderById = async (id, name) =>{
 	const parentFolder = await getFolderById(id);
 	const parentPath = parentFolder.data().path;
-	const path = parentPath + "/" + name;
+	const path = parentPath + name + "/";
 
 	const folder = {
 		parent:id,
@@ -49,8 +49,6 @@ const getFolderByPath = async (path) => {
 
 	const folder = folders.docs ? folders.docs[0] : null;
 
-	console.log(folder)
-
 	if (!folder){
 		return null
 	}
@@ -75,6 +73,7 @@ const getFolderContentsById = async (id) => {
 		return { ...folder.data(), id: folder.ref.id }
 	})
 
+
 	const files = fileDocs.docs.map( file => {
 		return { ...file.data(), id: file.ref.id }
 	})
@@ -96,10 +95,10 @@ const getFolderContentsByPath = async (path) => {
 }
 
 module.exports = {
-  getAllFolders,
-  getFolderById,
-  getFolderContentsById,
-  getFolderContentsByPath,
+  	getAllFolders,
+  	getFolderById,
+  	getFolderContentsById,
+  	getFolderContentsByPath,
 	createFolderById,
 	getFolderByPath
 }

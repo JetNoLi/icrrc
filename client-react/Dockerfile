@@ -1,19 +1,21 @@
-# pull official base image
+# Selected Base Image compatible with React 
 FROM node:13.12.0-alpine
 
-# set working directory
+# Set Working Directory
 WORKDIR /app
 
-# # add `/app/node_modules/.bin` to $PATH
+# Add Path Specification for Installation of React
 ENV PATH /app/node_modules/.bin:$PATH
 
-# install app dependencies
+# Copy Dependencies List
 COPY package.json ./
+
+# Install Dependencies
 RUN npm install
 RUN npm install react-scripts@3.4.1 -g 
 
-# add app
+# Add the Source Code
 COPY . ./
 
-# start app
+# Start the Application
 CMD ["npm", "start"]
