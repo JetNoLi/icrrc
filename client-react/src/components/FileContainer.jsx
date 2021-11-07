@@ -52,6 +52,8 @@ const FileContainer = (props) => {
 
 		return ( 
 				<Box className = 'fileDisplayContainer'>
+						<h1> ICRRC Client Side Application </h1>
+						<Box h = '5vh'/>
 						<Button onClick = {getFolder}> Get Folder </Button>
 						<Box h = '5vh'/>
 						<Grid

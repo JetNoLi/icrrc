@@ -2,14 +2,14 @@ const axios = require('axios');
 const path = require('path');
 const fs = require('fs');
 
-const url = "http://localhost:8080";
+const url = "http://34.125.47.90:8080";
 
 const download = async () =>{
-    const filePath = path.resolve(__dirname, 'images', 'test.png');
+    const filePath = path.resolve(__dirname, 'images', 'test.jpg');
     const writer = fs.createWriteStream(filePath);
 
     try{
-        const file = await axios.get("http://localhost:8080/download/test.png", {
+        const file = await axios.get(url + "/download/test.jpg", {
             responseType: 'stream'
         });
 
@@ -29,13 +29,28 @@ const download = async () =>{
 const health = async () =>{
     try{
         const response = await axios.get(url + '/health');
-        console.log(response.data);
     }
     catch(error){
         console.log(error)
     }
 }
 
-download().then( () => console.log('completed'))
-    .catch( error => console.log(error, "problem"));
-health().then( () => console.log('completed'));
+const getFile = async () =>{
+    try{
+        const response = await axios.get(url + '/file?path=images_test.jpg');
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+
+const staticAccess = async () =>{
+    try{
+        const response = await axios.get(url + '/images/test.jpg')
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+
+module.exports = {health, download, getFile, staticAccess}

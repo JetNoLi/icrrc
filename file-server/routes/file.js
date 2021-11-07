@@ -11,8 +11,9 @@ const {
 const { resolvePath } = require('../utils/file-utils');
 
 /**
-* GET /file/
+* GET /file
 * @summary get all files or by path
+* @tags File
 * @param {string} path.query - path where file is located.
 * @return {object} 200 - success response
 */
@@ -54,6 +55,7 @@ router.get('/', async (req, res) =>{
 /**
 * GET /file/{id}
 * @summary get file by database ID i.e. firebase document ID
+* @tags File
 * @param {string} id.path - database ID 
 * @return {object} 200 - success response
 */
@@ -75,6 +77,7 @@ router.get('/:id', async (req, res) =>{
 /**
  * PUT /file/{id}
  * @summary Move file given by firebase id to path specified in query parameter relative to root directory
+ * @tags File
  * @param {string} id.path - database ID 
  * @param {string} path.query.required - new path to move file to use _ to denote slashes
  * @return {string} 200 - success response
@@ -93,8 +96,9 @@ router.put('/:id', async (req, res) =>{
 })
 
 /**
- * PUT /file/
+ * PUT /file
  * @summary Move file given by original path to path specified in query parameter relative to root directory
+ * @tags File
  * @param {string} oldPath.query - database ID 
  * @param {string} newPath.query - new path to move file to
  * @return {string} 200 - success response
@@ -117,6 +121,7 @@ router.put('/:id', async (req, res) =>{
 /**
  * DELETE /file/{id}
  * @summary Delete File by database ID
+ * @tags File
  * @param {string} id.path - database ID 
  * @return {object} 200 - success response
  */
@@ -137,8 +142,9 @@ router.delete('/:id', async (req, res) =>{
 })
 
 /**
- * DELETE /file/
+ * DELETE /file
  * @summary Delete File by path relative to root directory
+ * @tags File
  * @param {string} path.query - path relative to root directory use _ to denote /
  * @return {object} 200 - success response
  */

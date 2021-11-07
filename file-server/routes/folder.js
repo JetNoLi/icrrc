@@ -5,8 +5,9 @@ const { resolvePath } = require('../utils/file-utils')
 const router = express.Router()
 
 /**
- * GET /folder/
+ * GET /folder
  * @summary route to get all folders or by path query param
+ * @tags Folder
  * @param {string} path.query - path to folder wrt. root directory, use _ to denote /
  * @param {boolean} contents.query - true indicates to include folder contents, only relevant if path query param
  * @return {array<object> || object} 200 -  successs response
@@ -23,7 +24,7 @@ router.get('/', async (req, res) => {
       }
     })
     res.send(folders)
-			.end()
+		.end()
   }
 
 	if (req.query.contents){
@@ -54,6 +55,7 @@ router.get('/', async (req, res) => {
 /**
  * GET /folder/{id}
  * @summary route to get folder by id
+ * @tags Folder
  * @param {string} id.path - database Id
  * @param {boolean} contents.query - include folder content
  * @return {array<object> || object} 200 - successs response
@@ -77,6 +79,7 @@ router.get('/:id', async (req, res) =>{
 /**
  * POST /folder/{folderName}
  * @summary route to create a folder in a given directory by the path
+ * @tags Folder
  * @param {string} path.query - path to where folder should be created, use _ to denote /
  * @param {string} folderName.path - name of new folder
  * @param {string} id.query - id of the folder to create the new folder in

@@ -3,7 +3,8 @@ const swaggerExpress = require('express-jsdoc-swagger');
 module.exports = {
     info: {
         version: '1.0.0',
-        title: 'Albums store',
+        title: 'ICRRC Documentation',
+        description: "This is an interactive documentation experience for the ICRRC system, which allows you to actually execute api requests to the running ICRRC server",
         license: {
           name: 'MIT',
         },
