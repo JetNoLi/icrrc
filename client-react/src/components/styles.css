@@ -9,6 +9,10 @@
     background-color: rgba(253, 240, 198, 0.37);
 }
 
+.heading{
+    font-size: 3vw;
+}
+
 .fileDisplayContainer{
     width: 100vw;
     height: 100vh;
@@ -16,6 +20,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: bisque;
 }
 
 .createContainer{
@@ -28,4 +33,22 @@
     justify-content: space-evenly;
     /* align-items: center; */
     background-color: rgba(253, 240, 198, 0.37);
+}
+
+.grid{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    border: 1px solid grey;
+    width: 60vw;
+    min-height: 40vh;
+    border-radius: 8px;
+    background-color: coral;
+}
+
+.gridRow{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
 }

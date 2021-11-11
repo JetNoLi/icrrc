@@ -15,7 +15,6 @@ const File = (props) => {
             className = 'fileContainer'
             onClick = {() => console.log(props)}
         >
-            
 
         </Box>
         <Center> <p> {name} </p></Center>

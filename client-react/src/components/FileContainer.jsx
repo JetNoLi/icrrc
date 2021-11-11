@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import {Box, Grid, GridItem, Button} from '@chakra-ui/react'
+import {Box,  GridItem, Button} from '@chakra-ui/react'
 import { getRoot } from '../api/api';
+import Grid from './grid';
 import File from './file.jsx';
 import Add from './add';
 import { useDisclosure } from '@chakra-ui/hooks';
@@ -50,18 +51,24 @@ const FileContainer = (props) => {
 		}
 	}
 
+	useEffect(() =>{
+		console.log('refresh', folders.length)
+	}, [folders])
+
 		return ( 
 				<Box className = 'fileDisplayContainer'>
-						<h1> ICRRC Client Side Application </h1>
+						<h1 className = 'heading'> <b> ICRRC Client Side Application </b> </h1>
 						<Box h = '5vh'/>
 						<Button onClick = {getFolder}> Get Folder </Button>
 						<Box h = '5vh'/>
-						<Grid
+						{/* <Grid
 							templateColumns = "repeat(8)"
 							gap = {4}
 						>
 							{displayFolders()}
-						</Grid>
+						</Grid> */}
+
+						<Grid contents = {folders}/>
 				</Box>
 		);
 }
